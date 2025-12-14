@@ -1,4 +1,3 @@
-
 # Enterprise Information Extraction System (Agentic AI)
 
 This module documents the design of an **agentic, multi-agent information extraction system** built to identify, validate, and structure enterprise-level company intelligence at scale.
@@ -123,4 +122,100 @@ Validate supporting company attributes.
 - Verify headquarters location
 - Confirm legal entity status
 - Cross-check addresses and identifiers
-- Validate findings
+- Validate findings against multiple sources
+
+This step improves trustworthiness of extracted data.
+
+---
+
+### 6. Aggregation & Consolidation Agent
+
+**Purpose:**  
+Merge outputs from multiple agents into a unified record.
+
+**Responsibilities:**
+- Combine parent, subsidiary, and attribute data
+- Resolve conflicts between sources
+- Normalize output schema
+- Prepare final structured representation
+
+This agent ensures consistency and cleanliness of final output.
+
+---
+
+### 7. Confidence Scoring Agent
+
+**Purpose:**  
+Assess reliability of extracted information.
+
+**Responsibilities:**
+- Compute semantic similarity between sources
+- Assign confidence buckets (High / Medium / Low)
+- Flag uncertain records for review or reprocessing
+
+Confidence scoring enables downstream systems to make informed decisions.
+
+---
+
+## End-to-End Flow
+
+1. Company input is ingested and normalized  
+2. Authoritative sources are discovered  
+3. Web content is extracted  
+4. Ownership and hierarchy are inferred  
+5. Attributes are validated  
+6. Results are consolidated  
+7. Confidence scores are assigned  
+
+The system is capable of processing **thousands of companies in a single run**.
+
+---
+
+## Key Design Decisions
+
+### Multi-Agent Separation
+Each agent solves one cognitive problem, improving:
+- Accuracy
+- Debuggability
+- Scalability
+
+### Reasoning Over Rules
+LLMs are used where deterministic rules fail, especially for:
+- Ownership inference
+- Ambiguous language
+- Cross-source validation
+
+### Quality-First Pipeline
+Filtering, validation, and scoring are applied **before** data is accepted.
+
+---
+
+## Validation & Impact
+
+- Successfully processed **6000+ organizations**
+- Achieved **75%+ accuracy** on global parent identification
+- Significantly reduced manual research effort
+- Improved consistency across enterprise datasets
+
+---
+
+## Tech Stack (Conceptual)
+
+- **Language:** Python  
+- **Agent Orchestration:** LangGraph  
+- **LLM Platforms:** AWS Bedrock (LLM models)  
+- **Web Crawling:** Crawl-based extraction tools  
+- **Search:** Search APIs  
+- **Similarity Scoring:** Embedding-based semantic similarity  
+
+---
+
+## What This Module Demonstrates
+
+- Large-scale agentic information extraction
+- LLM-based reasoning over unstructured web data
+- Multi-agent orchestration patterns
+- Confidence-aware data pipelines
+
+This project reflects real-world enterprise challenges in **data reliability, scale, and automation**, addressed using agentic AI system design.
+
